@@ -1,4 +1,9 @@
+use std::process::Command;
+
 pub fn execute(args : Vec<String>) -> bool {
-    //todo: ready to start parsing and running actual commands
-    false
+    let output = Command::new(&args[0]).output().unwrap_or_else(|e| {
+        panic!("failed to execute process: {}", e)
+    });
+
+    output.status.success()
 }

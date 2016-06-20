@@ -1,3 +1,5 @@
+use std::env;
+
 mod io_helper;
 mod executor;
 
@@ -23,7 +25,8 @@ fn main() {
 fn run_loop() {
 
     loop {
-        printfl!("> ");
+        let dir = env::current_dir().unwrap();
+        printfl!("{} > ", dir.display());
 
         let input : String = io_helper::handle_read();
         let args : Vec<String> = io_helper::split_line(&input);

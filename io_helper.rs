@@ -18,7 +18,7 @@ fn read_line() -> io::Result<String> {
     Quotes, multiple lines, etc all ignore for now.
 */
 pub fn split_line(line : &str) -> Vec<String> {
-    let split_line = line.split(" ");
+    let split_line = line.trim().split(" ");
     let temp_args: Vec<&str> = split_line.collect();
     let mut args = Vec::new();
     
